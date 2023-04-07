@@ -1,6 +1,6 @@
 # 每天6:30执行
 
-name: Start
+name: 百度贴吧签到
 
 on:
    push:
