@@ -8,6 +8,12 @@ on:
    schedule:
        - cron: '30 22 * * *'
 
+env:
+  TZ: Asia/Shanghai
+  TELEGRAM_NOTIFICATION: true
+  TELEGRAM_NOTIFICATION_CONTENT: "<b>📖 百度贴吧签到成功！</b>"
+
+
 jobs:
   TiebaSignIn:
 
@@ -32,3 +38,9 @@ jobs:
         SCKEY: ${{ secrets.SCKEY }}
       run: |
         mvn compile exec:java -Dexec.mainClass="top.srcrs.Run" -Dexec.args="${BDUSS} ${SCKEY}"
+        
+    - name: Telegram推送
+      run: |
+          if [ "${{ env.TELEGRAM_NOTIFICATION }}" == "true" ]; then
+            curl -s "https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage" -d "chat_id=${{ secrets.TELEGRAM_CHAT_ID }}&text=${{ env.TELEGRAM_NOTIFICATION_CONTENT }}&parse_mode=HTML"
+          fi    
