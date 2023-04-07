@@ -1,4 +1,4 @@
-# 每天6:30执行
+
 
 name: 百度贴吧签到
 
@@ -6,7 +6,7 @@ on:
    push:
    gollum:
    schedule:
-       - cron: '30 22 * * *'
+       - cron: '0 5,17 * * *'  # 每天凌晨1点和下午13点运行
 
 env:
   TZ: Asia/Shanghai
