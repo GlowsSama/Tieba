@@ -11,7 +11,7 @@ on:
 env:
   TZ: Asia/Shanghai
   TELEGRAM_NOTIFICATION: true
-  TELEGRAM_NOTIFICATION_CONTENT: "<b>📖 百度贴吧签到成功！</b>"
+  TELEGRAM_NOTIFICATION_CONTENT: "<b>📖 百度贴吧已打卡！</b>"
 
 
 jobs:
